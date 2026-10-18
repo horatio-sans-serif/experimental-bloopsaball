@@ -1,0 +1,188 @@
+{
+  "voice": "Samantha",
+  "made": "2026-10-18",
+  "packs": {
+    "kid": {
+      "oh": {
+        "file": "kid/oh.wav",
+        "text": "Oh!"
+      },
+      "launch": {
+        "file": "kid/launch.wav",
+        "text": "Whoaaa!"
+      },
+      "scream": {
+        "file": "kid/scream.wav",
+        "text": "AAAAAAH!"
+      },
+      "whee": {
+        "file": "kid/whee.wav",
+        "text": "Wheeeee!"
+      },
+      "never": {
+        "file": "kid/never.wav",
+        "text": "NEVERRRR!"
+      },
+      "bip": {
+        "file": "kid/bip.wav",
+        "text": "Eep!"
+      },
+      "oof": {
+        "file": "kid/oof.wav",
+        "text": "Oof!"
+      },
+      "ow": {
+        "file": "kid/ow.wav",
+        "text": "OW!"
+      },
+      "splat": {
+        "file": "kid/splat.wav",
+        "text": "Ow ow OW!"
+      },
+      "phew": {
+        "file": "kid/phew.wav",
+        "text": "Phew…"
+      },
+      "dizzy": {
+        "file": "kid/dizzy.wav",
+        "text": "Wuh-wuh-wuh…"
+      },
+      "gasp": {
+        "file": "kid/gasp.wav",
+        "text": "*gasp*"
+      },
+      "whimper": {
+        "file": "kid/whimper.wav",
+        "text": "mmnnn…"
+      },
+      "gulp": {
+        "file": "kid/gulp.wav",
+        "text": "*gulp*"
+      },
+      "mode_scream": {
+        "file": "kid/mode_scream.wav",
+        "text": "Scream mode!"
+      },
+      "mode_whee": {
+        "file": "kid/mode_whee.wav",
+        "text": "Whee mode!"
+      },
+      "mode_taunt": {
+        "file": "kid/mode_taunt.wav",
+        "text": "Bring it!"
+      },
+      "mode_adult": {
+        "file": "kid/mode_adult.wav",
+        "text": "Nope, kid edition."
+      },
+      "mode_mine": {
+        "file": "kid/mode_mine.wav",
+        "text": "Hi! It's me!"
+      },
+      "sleep": {
+        "file": "kid/sleep.wav",
+        "text": "Night night…"
+      },
+      "wake": {
+        "file": "kid/wake.wav",
+        "text": "Hm?"
+      },
+      "nope": {
+        "file": "kid/nope.wav",
+        "text": "Nope."
+      },
+      "m_calm_1": {
+        "file": "kid/m_calm_1.wav",
+        "text": "Hmm."
+      },
+      "m_calm_2": {
+        "file": "kid/m_calm_2.wav",
+        "text": "Mm-hm."
+      },
+      "m_calm_3": {
+        "file": "kid/m_calm_3.wav",
+        "text": "Uh…"
+      },
+      "m_calm_4": {
+        "file": "kid/m_calm_4.wav",
+        "text": "Oh."
+      },
+      "m_calm_5": {
+        "file": "kid/m_calm_5.wav",
+        "text": "Um."
+      },
+      "m_calm_6": {
+        "file": "kid/m_calm_6.wav",
+        "text": "Hm?"
+      },
+      "m_nerv_1": {
+        "file": "kid/m_nerv_1.wav",
+        "text": "Oh no."
+      },
+      "m_nerv_2": {
+        "file": "kid/m_nerv_2.wav",
+        "text": "Uh oh."
+      },
+      "m_nerv_3": {
+        "file": "kid/m_nerv_3.wav",
+        "text": "Oh dear, oh dear."
+      },
+      "m_nerv_4": {
+        "file": "kid/m_nerv_4.wav",
+        "text": "Um, um, um."
+      },
+      "m_nerv_5": {
+        "file": "kid/m_nerv_5.wav",
+        "text": "What was that?"
+      },
+      "m_nerv_6": {
+        "file": "kid/m_nerv_6.wav",
+        "text": "No no no no."
+      }
+    },
+    "adult": {
+      "launch": {
+        "file": "adult/launch.wav",
+        "text": "OH SH*T!"
+      },
+      "ow": {
+        "file": "adult/ow.wav",
+        "text": "OW! D*MN!"
+      },
+      "splat": {
+        "file": "adult/splat.wav",
+        "text": "WHAT THE F—"
+      },
+      "phew": {
+        "file": "adult/phew.wav",
+        "text": "Holy sh*t."
+      },
+      "never": {
+        "file": "adult/never.wav",
+        "text": "NEVER, SUCKER!"
+      },
+      "mode_adult": {
+        "file": "adult/mode_adult.wav",
+        "text": "Oh, it's ON."
+      }
+    }
+  },
+  "murmur": {
+    "calm": [
+      "m_calm_1",
+      "m_calm_2",
+      "m_calm_3",
+      "m_calm_4",
+      "m_calm_5",
+      "m_calm_6"
+    ],
+    "nervous": [
+      "m_nerv_1",
+      "m_nerv_2",
+      "m_nerv_3",
+      "m_nerv_4",
+      "m_nerv_5",
+      "m_nerv_6"
+    ]
+  }
+}

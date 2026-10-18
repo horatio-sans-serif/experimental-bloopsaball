@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bloopsaball Studio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="mark">BLOOPSABALL</span><span class="tag">Design a nervous bouncy ball, then throw it and listen.</span></div>
+  <div class="modeline" id="modeline" aria-live="polite"></div>
+  <button id="sound" class="primary">Start sound</button>
+</header>
+
+<main class="layout">
+  <aside class="panel" id="design" aria-label="Design">
+    <h2>Design</h2>
+    <p class="q">What is the ball made of, and what does that do to it?</p>
+
+    <section>
+      <h3>Shell</h3>
+      <label>Material <select id="d-shell"></select></label>
+      <p class="note" id="d-shell-note"></p>
+      <label>Ball diameter <output id="o-diameter"></output><input type="range" id="d-diameter" min="55" max="85" step="1"></label>
+      <label>Core diameter <output id="o-core"></output><input type="range" id="d-core" min="32" max="52" step="1"></label>
+      <label>Holes (open area) <output id="o-open"></output><input type="range" id="d-open" min="0" max="40" step="1"></label>
+      <label>Hole layout <select id="d-layout"><option value="all">All over (best for sound)</option><option value="half">One half only (true wiffle: curves without spin)</option></select></label>
+    </section>
+
+    <section>
+      <h3>Inside the core</h3>
+      <label>Speaker <select id="d-speaker"></select></label>
+      <label>Amp power <select id="d-amp"></select></label>
+      <label>Motion sensor <select id="d-imu"></select></label>
+      <label>Battery <select id="d-battery"></select></label>
+    </section>
+
+    <section>
+      <h3>Results</h3>
+      <div id="results"></div>
+      <figure class="chart">
+        <figcaption>Sound lost through the shell, by pitch</figcaption>
+        <svg id="tl-chart" viewBox="0 0 280 110" role="img" aria-label="Shell transmission loss by octave band"></svg>
+      </figure>
+      <ul class="warnings" id="warnings"></ul>
+      <details id="bom"><summary>Parts cost at 10,000 units</summary><table id="bom-table"></table></details>
+    </section>
+  </aside>
+
+  <section class="stage">
+    <canvas id="view" tabindex="0" aria-label="3D test scene"></canvas>
+    <div id="bubbles"></div>
+    <div class="saying" id="saying" aria-label="What each ball is saying"></div>
+    <div class="keys" id="keys"></div>
+    <div class="telemetry" id="telemetry">
+      <canvas id="trace" aria-label="Sensor traces for the selected ball"></canvas>
+      <div class="readout" id="readout"></div>
+    </div>
+  </section>
+
+  <aside class="panel" id="play" aria-label="Play">
+    <h2>Play</h2>
+    <p class="q">Where is it, who is holding it, and what is it saying?</p>
+
+    <section>
+      <h3>Scene</h3>
+      <div class="seg" id="scenes"></div>
+      <p class="note" id="scene-q"></p>
+    </section>
+
+    <section>
+      <h3>Balls</h3>
+      <ol class="balls" id="balls"></ol>
+      <div class="row"><button id="add-ball">Add ball <kbd>n</kbd></button><button id="remove-ball">Remove</button></div>
+    </section>
+
+    <section>
+      <h3>Throw</h3>
+      <label>Force <output id="o-power"></output><input type="range" id="t-power" min="1" max="10" step="0.5"></label>
+      <label>Up/down <output id="o-pitch"></output><input type="range" id="t-pitch" min="-60" max="80" step="1"></label>
+      <label>Left/right <output id="o-yaw"></output><input type="range" id="t-yaw" min="-180" max="180" step="1"></label>
+      <label>Curve (side spin) <output id="o-spin"></output><input type="range" id="t-spin" min="-25" max="25" step="1"></label>
+      <div class="row">
+        <button id="b-throw" class="primary">Throw <kbd>space</kbd></button>
+        <button id="b-drop">Drop <kbd>d</kbd></button>
+        <button id="b-pick">Pick up <kbd>r</kbd></button>
+        <button id="b-all">Throw all <kbd>a</kbd></button>
+      </div>
+      <label class="check"><input type="checkbox" id="t-idle" checked> Hands toss idly</label>
+    </section>
+
+    <section>
+      <h3>Persona</h3>
+      <label>Voice style</label>
+      <div class="seg" id="styles">
+        <button data-style="recorded">Recorded voice</button><button data-style="spirit">11th dimension</button>
+      </div>
+      <p class="note" id="voice-note"></p>
+      <label>Mode</label>
+      <div class="seg" id="modes">
+        <button data-mode="scream">Scream</button><button data-mode="whee">Whee</button><button data-mode="taunt">Taunt</button>
+      </div>
+      <label class="check"><input type="checkbox" id="p-edition"> Adult edition (separate product)</label>
+      <label class="check"><input type="checkbox" id="p-adult" disabled> Adult words</label>
+      <label class="check"><input type="checkbox" id="p-mine"> Use my recordings</label>
+      <button id="squeeze" class="squeeze">Hold to squeeze <kbd>s</kbd></button>
+      <p class="note">Rhythms are read only while the ball is held, so bounces never change its mode.</p>
+      <table class="patterns" id="patterns"></table>
+    </section>
+
+    <section>
+      <h3>Listening</h3>
+      <label>Listener <select id="l-mode"><option value="camera">At the camera</option><option value="tripod">At the phone on the tripod</option></select></label>
+      <label class="check"><input type="checkbox" id="l-raw"> Hear the voice without the ball (no speaker or shell)</label>
+      <label class="check"><input type="checkbox" id="l-echo"> Room echo (true to the room, but a hard room smears the voice)</label>
+      <label class="check"><input type="checkbox" id="l-noise"> Play the room's background noise (to test if the ball is heard over it)</label>
+      <label>Volume <output id="o-vol"></output><input type="range" id="l-vol" min="-20" max="30" step="1"></label>
+    </section>
+
+    <details id="voice-panel">
+      <summary>My voice: record each sample</summary>
+      <p class="note">Each slot is one file on the ball's SD card. Plug the ball into a computer over USB-C, and these go in <code>sd/packs/mine/</code>. Turn on “Use my recordings” to hear them.</p>
+      <ul class="slots" id="slots"></ul>
+    </details>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
