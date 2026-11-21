@@ -1,0 +1,20 @@
+{
+  "dimension": "behavior",
+  "title": "Is the ball heard where it matters?",
+  "criteria": [
+    {
+      "id": "heard-at-3m",
+      "claim": "A full scream at 3 m in the living room is at least 10 dB above the room's background, enough to be understood.",
+      "metric": "audibility.margin3mDB", "judge": "numeric", "weight": 3,
+      "truth": { "min": 10 },
+      "source": "Speech is understood reliably about 10-15 dB above background noise (ANSI/ASA S12.60 asks 15 dB for classrooms)."
+    },
+    {
+      "id": "murmur-at-arms-length",
+      "claim": "The murmur is audible at half a metre in a quiet room (40 dBA), at least 5 dB above it.",
+      "metric": "audibility.murmurHalfMQuietMarginDB", "judge": "numeric", "weight": 1,
+      "truth": { "min": 5 },
+      "source": "Product requirement: you should hear it fretting in your hand."
+    }
+  ]
+}

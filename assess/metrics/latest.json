@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-18T23:51:57.956Z",
+  "commit": "84efd0e+dirty",
+  "values": {
+    "audibility": {
+      "design": {
+        "shell": "eva",
+        "diameterMm": 67,
+        "coreMm": 42,
+        "openArea": 0.18,
+        "holeLayout": "all",
+        "speaker": "s28",
+        "amp": "lipo",
+        "imu": "dsv320",
+        "battery": "b300"
+      },
+      "spkSens": 92,
+      "ampW": 0.8,
+      "shellLoss1k": 6.9521348812433175,
+      "shellLossPinkA": 6.816105867040817,
+      "livingNoiseDBA": 58,
+      "scream10cmDBA": 84.77232971480055,
+      "scream3mLivingDBA": 65.23703097154454,
+      "margin3mDB": 7.237030971544542,
+      "murmurHalfMQuietMarginDB": 13.770948605430426
+    }
+  },
+  "errors": {}
+}

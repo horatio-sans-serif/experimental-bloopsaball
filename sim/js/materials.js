@@ -35,11 +35,14 @@ export const SHELLS = {
   },
 };
 
-// Micro speakers. sens = dB SPL at 10 cm with 1 W in (typical datasheet figure).
+// Micro speakers. sens = dB SPL at 10 cm with 1 W in.
+// s28 is a real part (checked by assess/rubrics/representation.json); s20 and s36
+// are still unverified guesses.
 export const SPEAKERS = {
-  s20: { name: '20 mm, 8 Ω, 1 W', sens: 84, fRes: 950, pMax: 1.0, massG: 2, costUsd: 0.35, diaMm: 20 },
-  s28: { name: '28 mm, 8 Ω, 1 W', sens: 87, fRes: 700, pMax: 1.0, massG: 5, costUsd: 0.45, diaMm: 28 },
-  s36: { name: '36 mm, 8 Ω, 2 W', sens: 89, fRes: 520, pMax: 2.0, massG: 9, costUsd: 0.70, diaMm: 36 },
+  s20: { name: '20 mm, 8 Ω, 1 W (unverified)', sens: 84, fRes: 950, pMax: 1.0, massG: 2, costUsd: 0.35, diaMm: 20 },
+  // Taoglas SPKM.28.8.A: 89 dB at 0.5 W / 10 cm, so 92 dB at 1 W. PUI AS02808MR-R claims 100 dB.
+  s28: { name: '28 mm Taoglas SPKM.28.8.A, 8 Ω', sens: 92, fRes: 700, pMax: 1.0, massG: 5, costUsd: 0.45, diaMm: 28 },
+  s36: { name: '36 mm, 8 Ω, 2 W (unverified)', sens: 89, fRes: 520, pMax: 2.0, massG: 9, costUsd: 0.70, diaMm: 36 },
 };
 
 // MAX98357A class-D amp output into 8 Ω, by supply voltage (W, ~10% THD).
@@ -92,7 +95,9 @@ export function hertzK(E, R) {
 // Turns a design (choices) into physical properties. Everything downstream reads this.
 export function deriveDesign(design) {
   const d = { ...DEFAULT_DESIGN, ...design };
-  const shell = SHELLS[d.shell], spk = SPEAKERS[d.speaker], imu = IMUS[d.imu];
+  // d.rho overrides the catalog density, e.g. with a measured foam sample.
+  const shell = d.rho ? { ...SHELLS[d.shell], rho: d.rho } : SHELLS[d.shell];
+  const spk = SPEAKERS[d.speaker], imu = IMUS[d.imu];
   const bat = BATTERIES[d.battery], amp = AMP_SUPPLY[d.amp];
   const R = d.diameterMm / 2000, rc = d.coreMm / 2000;
   const shellT = Math.max(0.002, R - rc);

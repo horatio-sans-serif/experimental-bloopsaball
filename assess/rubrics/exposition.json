@@ -1,0 +1,13 @@
+{
+  "dimension": "exposition",
+  "title": "Does the sim let Brian hear the answer for himself?",
+  "criteria": [
+    {
+      "id": "tripod-listen",
+      "claim": "Listening at the tripod with room noise on, Brian can make out what the ball yells.",
+      "judge": "human", "weight": 1,
+      "question": "In the sim (Christmas morning, Listener: phone on the tripod, room noise on, Volume so the room sounds real), throw the ball. Could you make out what it yelled?",
+      "anchors": { "1": "Drowned out", "3": "Heard something, could not tell what", "5": "Understood every word" }
+    }
+  ]
+}
