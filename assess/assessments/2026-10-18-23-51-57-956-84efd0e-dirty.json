@@ -1,0 +1,115 @@
+{
+  "at": "2026-10-18T23:51:57.956Z",
+  "commit": "84efd0e+dirty",
+  "decision": "DRAFT (Brian to confirm): can a tennis-ball-sized foam ball with a 28 mm speaker be heard clearly over a lively Christmas-morning room, well enough to justify building a prototype?",
+  "dimensions": [
+    {
+      "dimension": "behavior",
+      "title": "Is the ball heard where it matters?",
+      "results": [
+        {
+          "id": "heard-at-3m",
+          "claim": "A full scream at 3 m in the living room is at least 10 dB above the room's background, enough to be understood.",
+          "judge": "numeric",
+          "weight": 3,
+          "source": "Speech is understood reliably about 10-15 dB above background noise (ANSI/ASA S12.60 asks 15 dB for classrooms).",
+          "status": "fail",
+          "score": 0,
+          "value": 7.237030971544542,
+          "band": [
+            10,
+            null
+          ]
+        },
+        {
+          "id": "murmur-at-arms-length",
+          "claim": "The murmur is audible at half a metre in a quiet room (40 dBA), at least 5 dB above it.",
+          "judge": "numeric",
+          "weight": 1,
+          "source": "Product requirement: you should hear it fretting in your hand.",
+          "status": "pass",
+          "score": 1,
+          "value": 13.770948605430426,
+          "band": [
+            5,
+            null
+          ]
+        }
+      ],
+      "score": 0.25,
+      "coverage": 1
+    },
+    {
+      "dimension": "exposition",
+      "title": "Does the sim let Brian hear the answer for himself?",
+      "results": [
+        {
+          "id": "tripod-listen",
+          "claim": "Listening at the tripod with room noise on, Brian can make out what the ball yells.",
+          "judge": "human",
+          "weight": 1,
+          "status": "needs-rating",
+          "why": "In the sim (Christmas morning, Listener: phone on the tripod, room noise on, Volume so the room sounds real), throw the ball. Could you make out what it yelled?"
+        }
+      ],
+      "score": null,
+      "coverage": 0
+    },
+    {
+      "dimension": "representation",
+      "title": "Are the sim's loudness inputs true to real parts and real rooms?",
+      "results": [
+        {
+          "id": "speaker-sensitivity",
+          "claim": "The sim's 28 mm speaker is as loud as real 28 mm, 8 ohm, 1 W parts (dB SPL at 10 cm with 1 W).",
+          "judge": "numeric",
+          "weight": 2,
+          "source": "Distributor listings, 2026-10-18: Taoglas SPKM.28.8.A 89 dB at 0.5 W / 10 cm (= 92 dB at 1 W); PUI Audio AS02808MR-R 80 dB at 1 W / 1 m (= 100 dB at 10 cm). Confirm in the PDF datasheets.",
+          "status": "pass",
+          "score": 1,
+          "value": 92,
+          "band": [
+            92,
+            100
+          ]
+        },
+        {
+          "id": "amp-power",
+          "claim": "The amp's power on battery voltage matches the MAX98357A's published figures into 8 ohms.",
+          "judge": "numeric",
+          "weight": 1,
+          "source": "Adafruit MAX98357 guide: 0.8 W at 3.3 V and 1.8 W at 5 V into 8 ohms, 10% THD. 3.7 V lies between; 1.0 W is an interpolation, not a datasheet value.",
+          "status": "pass",
+          "score": 1,
+          "value": 0.8,
+          "band": [
+            0.8,
+            1
+          ]
+        },
+        {
+          "id": "shell-loss",
+          "claim": "The sound lost through the shell (pink noise, A-weighted) matches a phone measurement of a real speaker wrapped in real foam.",
+          "judge": "numeric",
+          "weight": 2,
+          "status": "unmeasured",
+          "value": 6.816105867040817,
+          "why": "waiting for your measurement \"shell-loss-dba\": See docs/MEASURING.md, test 2: pink noise from a small speaker, phone meter 30 cm away, open air then wrapped in foam; record open-air LAeq minus wrapped LAeq."
+        },
+        {
+          "id": "room-noise",
+          "claim": "The sim's Christmas-morning background (58 dBA) matches a real lively family room.",
+          "judge": "numeric",
+          "weight": 1,
+          "status": "unmeasured",
+          "value": 58,
+          "why": "waiting for your measurement \"room-noise-dba\": See docs/MEASURING.md, test 1: phone meter on the table during a lively family moment, 60-second LAeq."
+        }
+      ],
+      "score": 1,
+      "coverage": 0.5
+    }
+  ],
+  "next": "Fix \"heard-at-3m\" (behavior): A full scream at 3 m in the living room is at least 10 dB above the room's background, enough to be understood.",
+  "collectorErrors": {}
+}

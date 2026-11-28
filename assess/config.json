@@ -1,0 +1,5 @@
+{
+  "decision": "DRAFT (Brian to confirm): can a tennis-ball-sized foam ball with a 28 mm speaker be heard clearly over a lively Christmas-morning room, well enough to justify building a prototype?",
+  "collect": [{ "name": "audibility", "cmd": "node assess/collect/audibility.mjs" }],
+  "judge": { "model": "deepseek-flash", "maxCalls": 10 }
+}

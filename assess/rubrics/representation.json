@@ -1,0 +1,34 @@
+{
+  "dimension": "representation",
+  "title": "Are the sim's loudness inputs true to real parts and real rooms?",
+  "criteria": [
+    {
+      "id": "speaker-sensitivity",
+      "claim": "The sim's 28 mm speaker is as loud as real 28 mm, 8 ohm, 1 W parts (dB SPL at 10 cm with 1 W).",
+      "metric": "audibility.spkSens", "judge": "numeric", "weight": 2,
+      "truth": { "min": 92, "max": 100 },
+      "source": "Distributor listings, 2026-10-18: Taoglas SPKM.28.8.A 89 dB at 0.5 W / 10 cm (= 92 dB at 1 W); PUI Audio AS02808MR-R 80 dB at 1 W / 1 m (= 100 dB at 10 cm). Confirm in the PDF datasheets."
+    },
+    {
+      "id": "amp-power",
+      "claim": "The amp's power on battery voltage matches the MAX98357A's published figures into 8 ohms.",
+      "metric": "audibility.ampW", "judge": "numeric", "weight": 1,
+      "truth": { "min": 0.8, "max": 1.0 },
+      "source": "Adafruit MAX98357 guide: 0.8 W at 3.3 V and 1.8 W at 5 V into 8 ohms, 10% THD. 3.7 V lies between; 1.0 W is an interpolation, not a datasheet value."
+    },
+    {
+      "id": "shell-loss",
+      "claim": "The sound lost through the shell (pink noise, A-weighted) matches a phone measurement of a real speaker wrapped in real foam.",
+      "metric": "audibility.sampleShellLossPinkA", "judge": "numeric", "weight": 2,
+      "truth": { "measured": "shell-loss-dba", "tolerance": 3 },
+      "procedure": "See docs/MEASURING.md, test 2: pink noise from a small speaker, phone meter 30 cm away, open air then wrapped in foam; record open-air LAeq minus wrapped LAeq."
+    },
+    {
+      "id": "room-noise",
+      "claim": "The sim's Christmas-morning background (58 dBA) matches a real lively family room.",
+      "metric": "audibility.livingNoiseDBA", "judge": "numeric", "weight": 1,
+      "truth": { "measured": "room-noise-dba", "tolerance": 5 },
+      "procedure": "See docs/MEASURING.md, test 1: phone meter on the table during a lively family moment, 60-second LAeq."
+    }
+  ]
+}
